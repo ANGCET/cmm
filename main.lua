@@ -1,5 +1,22 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "gai xinh cug phai di ia", HidePremium = false, IntroText = "nuh uh", IntroIcon = "rbxassetid://4483345998",   SaveConfig = false, ConfigFolder = "CetTest"})
+--value
+_G.Toggle = true
+
+
+--function
+function Toggle()
+while _G.Toggle == true do 
+  task.wait(0.01)
+   for i = 1, 20 do
+  task.spawn(function()
+  game:GetService("Players").LocalPlayer.Character:FindFirstChild("Shattering Vain").RemoteFunction:InvokeServer("hit", {100000000000, 1, game:GetService("Players").LocalPlayer.Character.Humanoid})
+        wait()
+  end)
+    end 
+  end 
+end
+
 --tabs 1
 local Tab = Window:MakeTab({
 	Name = "cac",
@@ -43,6 +60,15 @@ end
 
 rs.Heartbeat:Connect(m)
   	end
+})
+
+Tab:AddToggle({
+	Name = "ShatteringVain Kill Aura",
+	Default = false,
+	Callback = function(Value)
+		_G.Toggle = Value
+      Toggle()
+	end
 })
 
 --tabs 2
